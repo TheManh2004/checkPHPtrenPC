@@ -1,0 +1,868 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: rgb(203, 203, 203);
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  background-color: #b3e5fc;
+}
+
+.arrow-container {
+  position: relative;
+}
+
+.arrow-bottom {
+  cursor: pointer;
+  background-color: #b3e5fc;
+  border: none;
+}
+
+.notification {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* Popup chứa câu hỏi */
+.clicknotification {
+  position: relative;
+}
+
+.question-list {
+  display: none;
+  /* Ẩn mặc định */
+  position: absolute;
+  top: 100%;
+  /* Đảm bảo nó hiện dưới notification */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.question-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.question-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.question-list li:last-child {
+  border-bottom: none;
+}
+
+.question-list .question-title {
+  font-weight: bold;
+}
+
+.question-list .question-time {
+  font-size: 12px;
+  color: gray;
+}
+
+#menuContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+#menuContent ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menuContent ul li {
+  padding: 8px 12px;
+  display: flex;
+  /* Sử dụng flexbox để căn chỉnh hình ảnh và văn bản theo hàng ngang */
+  align-items: center;
+}
+
+#menuContent ul li img {
+  margin-right: 8px;
+  /* Khoảng cách giữa ảnh và văn bản */
+  width: 24px;
+  /* Điều chỉnh kích thước ảnh */
+  height: 24px;
+}
+
+#menuContent ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+#menuContent ul li a:hover {
+  background-color: #f0f0f0;
+}
+
+header div a img {
+  height: auto;
+}
+
+.logo-search {
+  display: flex;
+  margin-left: 5%;
+  gap: 13%;
+  align-items: center;
+}
+
+.logo {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  border: none;
+  padding: 5px;
+  outline: none;
+}
+
+.search-box button {
+  background-color: #42a5f5;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.notification {
+  position: relative;
+  margin-right: 10px;
+}
+
+.notification .fa-envelope {
+  font-size: 20px;
+  color: #000;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.username {
+  margin-right: 10px;
+  color: #000;
+}
+
+.role {
+  color: #1e88e5;
+}
+
+.insert-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  margin-left: 56%;
+  gap: 15px;
+
+}
+
+.button-upload {
+  background-color: white;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  /* 400 là Regular */
+  height: 40px;
+  color: rgb(97, 141, 211);
+  cursor: pointer;
+}
+
+.button-file {
+  background-color: #0095FF;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  /* 400 là Regular */
+  height: 40px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.button-video {
+  background-color: #0095FF;
+  border-radius: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  /* 400 là Regular */
+  width: max-content;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+nav div button .fa-upload {
+  padding-right: 10px;
+  color: black;
+  font-size: 16px;
+}
+
+nav div button .fa-file-arrow-up {
+  padding-right: 10px;
+  font-size: 16px;
+  color: #000;
+}
+
+nav div button .fa-file-video {
+  padding-right: 10px;
+  font-size: 16px;
+  color: #000;
+}
+
+/* Kiểu cho modal (giữ nguyên từ phần trước) */
+/* Kiểu cho modal */
+/* Kiểu cho modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Phần ngăn cách bằng border-bottom */
+.section-border {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* Kiểu cho các input để full width */
+.input-full-width {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Kiểu cho phần câu dẫn */
+#video-instruction-text,
+#file-instruction-text {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Kiểu ẩn hiện các phần */
+#video-url-inputs,
+#video-upload-input,
+#file-url-inputs,
+#file-upload-input {
+  margin-top: 15px;
+}
+
+.inner-wrap .subject {
+  display: flex;
+  padding: 20px 0px;
+  justify-content: space-between;
+}
+
+.inner-wrap .subject .subject-select {
+  width: 30%;
+  padding-top: 10px;
+  height: max-content;
+  background-color: white;
+}
+
+.inner-wrap .subject .subject-select ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-wrap .subject .main-subject {
+  width: 65%;
+  height: 700px;
+  background-color: white;
+}
+
+.inner-wrap .subject .subject-select .book-select {
+  display: flex;
+  gap: 40px;
+  padding: 0 10px;
+  cursor: pointer;
+  justify-content: center;
+  border-bottom: 1px solid;
+}
+
+.inner-wrap .subject .subject-select .book-select img {
+  width: 64px;
+  height: 64px;
+}
+
+.inner-wrap .subject .subject-select .book-select2 {
+  display: flex;
+  gap: 40px;
+  cursor: pointer;
+  padding: 10px 10px;
+  justify-content: center;
+  border-bottom: 1px solid;
+}
+
+.inner-wrap .subject .subject-select .book-select2 img {
+  width: 64px;
+  height: 64px;
+}
+
+.inner-wrap .subject .subject-select .book-select3 {
+  display: flex;
+  gap: 40px;
+  cursor: pointer;
+  padding: 10px 10px;
+  justify-content: center;
+  border-bottom: 1px solid;
+}
+
+.inner-wrap .subject .subject-select .book-select3 img {
+  width: 64px;
+
+  height: 64px;
+}
+
+.inner-wrap .subject .subject-select .book-select4 {
+  display: flex;
+  gap: 40px;
+  padding: 10px 10px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.inner-wrap .subject .subject-select .book-select4 img {
+  width: 64px;
+  height: 64px;
+}
+
+.accordion {
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.fa-list-ul {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+header-left h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.fa-bounce {
+  color: #63E6BE;
+  font-size: 18px;
+}
+
+.add-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.complete {
+  color: green;
+  font-size: 18px;
+}
+
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+}
+
+.lesson-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  position: relative;
+}
+
+.completed {
+  position: relative;
+}
+
+.lesson-list li:last-child {
+  border-bottom: none;
+}
+
+.lesson-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.lesson-item:hover {
+  background-color: #f9f9f9;
+}
+
+.lesson-content {
+  display: flex;
+  align-items: center;
+}
+
+.file-icon,
+.link-icon {
+  margin-right: 10px;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.options-button:hover+.menu,
+.menu:hover {
+  display: block;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.file-icon {
+  border-radius: 3px;
+  padding-right: 5px;
+  font-size: 18px;
+}
+
+
+.link-icon {
+  background-color: #5a9;
+  border-radius: 50%;
+  padding-right: 5px;
+  font-size: 18px;
+}
+
+.status {
+  font-size: 14px;
+}
+
+.status.complete {
+  color: green;
+}
+
+.status.not-available {
+  color: gray;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.expanded {
+  height: max-content;
+  /* Chiều cao danh sách mở ra tương ứng với 4 bài học */
+}
+.subject-container {
+  max-height: 700px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: Border for visibility */
+  padding: 10px; /* Optional: Add padding */
+  background-color: #f9f9f9; /* Optional: Background color */
+}
+
+.subject-list {
+  /* Additional styling can be applied here if needed */
+}
+
+.fa-list-ul {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+header-left h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.header-right1 {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.fa-bounce {
+  color: #63E6BE;
+  font-size: 18px;
+}
+
+.add-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.complete1 {
+  color: green;
+  font-size: 18px;
+}
+
+.lesson-list1 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+}
+
+.lesson-list1 li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+}
+
+.lesson-list1 li:last-child {
+  border-bottom: none;
+}
+
+.lesson-content1 {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.file-icon {
+  border-radius: 3px;
+  padding-right: 5px;
+  font-size: 18px;
+}
+
+
+.link-icon {
+  background-color: #5a9;
+  border-radius: 50%;
+  padding-right: 5px;
+  font-size: 18px;
+}
+
+.status {
+  font-size: 14px;
+}
+
+.status.complete {
+  color: green;
+}
+
+.status.not-available {
+  color: gray;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.expanded {
+  height: max-content;
+  /* Chiều cao danh sách mở ra tương ứng với 4 bài học */
+}
+
+.content-section {
+  display: none;
+  /* Ẩn tất cả nội dung */
+}
+
+.content-section.active {
+  display: block;
+  /* Chỉ hiển thị phần nội dung có class "active" */
+}
+
+
+.options {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  /* Đưa menu về phía bên phải của phần tử cha */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 5px;
+  /* Tạo khoảng cách bên trong cho menu */
+  white-space: nowrap;
+  /* Đảm bảo các nút không bị xuống dòng */
+}
+
+.menu button {
+  display: inline-block;
+  /* Đảm bảo nút hiển thị theo hàng ngang */
+  margin-right: 10px;
+  /* Khoảng cách giữa các nút */
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Khi menu được mở */
+.menu.open {
+  display: flex;
+  /* Sử dụng Flexbox để hiển thị theo hàng ngang */
+  flex-direction: row;
+  /* Đảm bảo các nút nằm ngang */
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+#main-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#main-content video {
+  display: block;
+  margin: 20px 0;
+  max-width: 100%;
+  /* Để video không vượt quá kích thước của container */
+}
+.modal {
+  display: none; /* Modal sẽ bị ẩn mặc định */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Làm mờ nền phía sau modal */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin: 10px 0 5px;
+}
+
+form input {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+ .modal button[type="submit"] {
+  padding: 10px 15px;
+  
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
