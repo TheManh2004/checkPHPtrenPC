@@ -15,7 +15,16 @@ if ($conn->connect_error) {
 }
 
 // Lấy danh sách câu hỏi từ bảng 'questions'
-$sql = "SELECT name, message, created_at FROM notifications ORDER BY created_at DESC";
+$sql = "SELECT 
+    u.name AS student_name, 
+    cq.question AS message, 
+    cq.created_at 
+FROM 
+    course_questions cq 
+JOIN 
+    users u ON cq.student_id = u.id 
+ORDER BY 
+    cq.created_at DESC";
 $result = $conn->query($sql);
 
 $questions = [];

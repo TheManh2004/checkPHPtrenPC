@@ -6,22 +6,22 @@ include 'header.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <nav class="insert-file">
-   
+
     <div class="insert-filesmall">
-    <button onclick="openModal('add-subject-modal')" class="button-file">
+        <button onclick="openModal('add-subject-modal')" class="button-file">
             <i class="fa-solid fa-folder-plus"></i>Thêm chủ đề
         </button>
         <div id="add-subject-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('add-subject-modal')">&times;</span>
-            <h3>Thêm Chủ Đề</h3>
-            <form id="add-subject-form" onsubmit="event.preventDefault(); addSubject();">
-                <label for="subject-title">Tiêu đề chủ đề:</label><br>
-                <input type="text" id="subject-title" placeholder="Nhập tiêu đề chủ đề" required><br>
-                <button type="submit">Thêm chủ đề</button>
-            </form>
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('add-subject-modal')">&times;</span>
+                <h3>Thêm Chủ Đề</h3>
+                <form id="add-subject-form" onsubmit="event.preventDefault(); addSubject();">
+                    <label for="subject-title">Tiêu đề chủ đề:</label><br>
+                    <input type="text" id="subject-title" placeholder="Nhập tiêu đề chủ đề" required><br>
+                    <button type="submit">Thêm chủ đề</button>
+                </form>
+            </div>
         </div>
-    </div>
 
 </nav>
 <div class="inner-wrap">
@@ -47,16 +47,8 @@ include 'header.php';
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="book-select3">
-                            <img src="./image/education.png" alt="education">
-                            <div class="book-caption">
-                                <h2>Hộp Thư</h2>
-                                <p>+ Thêm hộp thư</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
+                    
+                    <li >
                         <div class="book-select4">
                             <img src="./image/chart.png" alt="chart">
                             <div class="book-caption">
@@ -69,7 +61,7 @@ include 'header.php';
             </div>
             <div id="docsContent" class="main-subject">
                 <div id="tai-lieu-content" class="content-section active">
-                <div class="accordion">
+                    <div class="accordion">
                         <div class="subject-container">
                             <div class="subject-list">
                                 <?php include 'load_subjects.php'; // Ensure your subjects load here 
@@ -78,8 +70,8 @@ include 'header.php';
                         </div>
                     </div>
 
-                     <!-- Các mục bài học khác... -->
-                     <div id="edit-modal" class="modal">
+                    <!-- Các mục bài học khác... -->
+                    <div id="edit-modal" class="modal">
                         <div class="modal-content">
                             <span class="close" onclick="closeEditModal()">&times;</span>
                             <h3>Sửa Bài Học</h3>
@@ -118,9 +110,9 @@ include 'header.php';
                         <li>Câu hỏi 3</li>
                     </ul>
                 </div>
+
                 <div id="hop-thu-content" class="content-section">
-                    <h3>Hộp thư</h3>
-                    <!-- Nội dung hộp thư -->
+                
                 </div>
 
                 <div id="bao-cao-content" class="content-section">

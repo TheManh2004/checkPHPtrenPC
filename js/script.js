@@ -18,9 +18,9 @@ function loadQuestions() {
       data.forEach(question => {
         var li = document.createElement('li');
         li.innerHTML = `
-                <div class="question-title">${question.name} hỏi:</div>
+                <a href="hopthu.php" style="text-decoration: none;"><div class="question-title">${question.student_name} hỏi:</div>
                 <div class="question-content">${question.message}</div>
-                <div class="question-time">Hỏi lúc: ${question.created_at}</div>
+                <div class="question-time">Hỏi lúc: ${question.created_at}</div></a>
             `;
         questionList.appendChild(li);
       });
@@ -33,20 +33,17 @@ document.addEventListener('DOMContentLoaded', loadQuestions);
 // Lấy các phần tử icon và nội dung
 const bookSelect = document.querySelector('.book-select');
 const bookSelect2 = document.querySelector('.book-select2');
-const bookSelect3 = document.querySelector('.book-select3');
 const bookSelect4 = document.querySelector('.book-select4');
 
 // Lấy các phần tử nội dung
 const taiLieuContent = document.getElementById('tai-lieu-content');
 const cauHoiContent = document.getElementById('cau-hoi-content');
-const hopThuContent = document.getElementById('hop-thu-content');
 const baoCaoContent = document.getElementById('bao-cao-content');
 
 // Hàm để ẩn tất cả nội dung
 function hideAllContent() {
   taiLieuContent.classList.remove('active');
   cauHoiContent.classList.remove('active');
-  hopThuContent.classList.remove('active');
   baoCaoContent.classList.remove('active');
 }
 
@@ -62,11 +59,6 @@ bookSelect2.addEventListener('click', function () {
   cauHoiContent.classList.add('active');
 });
 
-// Sự kiện khi nhấn vào Hộp Thư
-bookSelect3.addEventListener('click', function () {
-  hideAllContent();
-  hopThuContent.classList.add('active');
-});
 
 // Sự kiện khi nhấn vào Báo Cáo
 bookSelect4.addEventListener('click', function () {
@@ -324,3 +316,4 @@ document.getElementById('edit-lesson-form').addEventListener('submit', function 
   };
   xhr.send("id=" + id + "&title=" + encodeURIComponent(title) + "&drive_link=" + encodeURIComponent(drive_link));
 });
+

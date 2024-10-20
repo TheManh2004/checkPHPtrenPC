@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8f8f8;
+}
+.mailbox-container { /* Đổi tên container để tránh trùng lặp */
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.question-listhopthu {
+    margin-bottom: 20px;
+    max-height: 300px; /* Giới hạn chiều cao của danh sách câu hỏi */
+    overflow-y: auto; /* Thêm thanh cuộn dọc khi nội dung vượt quá chiều cao */
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+.question-item {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 5px;
+}
+.question-item:hover {
+    background-color: #f0f0f0;
+}
+.question-detail {
+    display: none;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.response {
+    display: none;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.response textarea {
+    resize: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.response button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.response button:hover {
+    background-color: #45a049;
+}

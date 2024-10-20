@@ -63,7 +63,7 @@ $stmt->close();
                     <ul>
                         <li id="accountBtn"><img src="./image/account.png" alt="Tài khoản" /><a href="./account/account.php">Tài Khoản</a></li>
                         <li><img src="./image/khoahoc.png" alt="Khóa học" /><a href="index.php">Khóa học</a></li>
-                        <li><img src="./image/hopthu.png" alt="Hộp thư" id="mailbox" /><a href="#">Hộp thư</a></li>
+                        <li><img src="./image/hopthu.png" alt="Hộp thư" id="mailbox" /><a href="hopthu.php">Hộp thư</a></li>
                         <li><img src="./image/help.png" alt="Trợ giúp" /><a href="#">Trợ giúp</a></li>
                     </ul>
                 </div>
