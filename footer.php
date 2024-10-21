@@ -34,5 +34,43 @@
     <script src="./js/script.js"></script>
     <script src="./account/index.php"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy dữ liệu từ PHP
+        var totalChapters = <?php echo $totalChapters; ?>;
+        var totalLessons = <?php echo $totalLessons; ?>;
+
+        var ctx = document.getElementById('libraryChart').getContext('2d');
+        var libraryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tổng số bài học', 'Tổng số lessons'],
+                datasets: [{
+                    label: 'Thống kê Bài học và Lessons',
+                    data: [totalChapters, totalLessons],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 300 // Điều chỉnh theo nhu cầu của bạn
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

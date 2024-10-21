@@ -1,9 +1,59 @@
 <?php
 include 'header.php';
 ?>
+<?php
+// Kết nối Database
+class Connect {
+    public function KetNoi() {
+        $conn = new mysqli("localhost", "root", "", "btl"); // Cập nhật thông tin database
+        if ($conn->connect_error) {
+            die("Kết nối thất bại: " . $conn->connect_error);
+        }
+        return $conn;
+    }
+}
+
+// Lớp StatisticsDAO để lấy dữ liệu thống kê
+class StatisticsDAO {
+    public function getTotalChapters() {
+        $totalChapters = 0;
+        $db = new Connect();
+        $conn = $db->KetNoi();
+        $sql = "SELECT COUNT(*) AS totalChapters FROM chapters";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $totalChapters = $row['totalChapters'];
+        }
+        return $totalChapters;
+    }
+
+    public function getTotalLessons() {
+        $totalLessons = 0;
+        $db = new Connect();
+        $conn = $db->KetNoi();
+        $sql = "SELECT COUNT(*) AS totalLessons FROM lessons";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $totalLessons = $row['totalLessons'];
+        }
+        return $totalLessons;
+    }
+}
+
+// Lấy dữ liệu thống kê
+$stats = new StatisticsDAO();
+$totalChapters = $stats->getTotalChapters();
+$totalLessons = $stats->getTotalLessons();
+?>
+
+
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/stylefooter.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <nav class="insert-file">
 
@@ -116,8 +166,19 @@ include 'header.php';
                 </div>
 
                 <div id="bao-cao-content" class="content-section">
-                    <h3>Báo cáo</h3>
-                    <!-- Nội dung báo cáo -->
+                    <h1 style="margin-top: 15px;
+                                color: #0095FF;">Thống kê bài học và lessons</h1>
+    <div class="stats-box" style="margin-top: 20px">
+        <div class="stat-item">
+            <h3>Tổng số Chapters</h3>
+            <p id="total-chapters"><?php echo $totalChapters; ?></p>
+        </div>
+        <div class="stat-item">
+            <h3>Tổng số lessons</h3>
+            <p id="total-lessons"><?php echo $totalLessons; ?></p>
+        </div>
+    </div>
+    <canvas id="libraryChart" style="width:100%; height:400px;"></canvas>
                 </div>
             </div>
 

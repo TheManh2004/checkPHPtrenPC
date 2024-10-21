@@ -316,4 +316,4 @@ document.getElementById('edit-lesson-form').addEventListener('submit', function 
   };
   xhr.send("id=" + id + "&title=" + encodeURIComponent(title) + "&drive_link=" + encodeURIComponent(drive_link));
 });
-
+    

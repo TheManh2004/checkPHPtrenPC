@@ -866,3 +866,30 @@ form input {
 button[type="submit"]:hover {
   background-color: #218838;
 }
+.content-section {
+  padding: 20px; /* Giảm khoảng cách giữa các phần tử */
+}
+
+.stats-box {
+  display: flex;
+  justify-content: space-between; /* Căn giữa các mục */
+}
+
+.stat-item {
+  flex: 1; /* Để các mục có chiều rộng bằng nhau */
+  margin-right: 20px; /* Giảm khoảng cách bên phải */
+  background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px; /* Thêm một khoảng cách giữa các item */
+}
+
+.stat-item:last-child {
+  margin-right: 0; /* Không có khoảng cách cho mục cuối cùng */
+}
+
+canvas {
+  max-height: 400px; /* Giảm chiều cao của biểu đồ */
+  height: auto; /* Cho phép chiều cao tự động */
+  margin-top: 10px; /* Giảm khoảng cách trên biểu đồ */
+}
